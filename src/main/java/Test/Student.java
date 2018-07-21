@@ -7,6 +7,7 @@ public class Student {
     char sex;
     private String phoneNum;
 
+
     public Student() {
     }
 
