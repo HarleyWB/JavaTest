@@ -1,38 +1,40 @@
 package Test;
 
-import java.util.Arrays;
-import java.util.PriorityQueue;
-import java.util.Stack;
-import java.util.Vector;
+import java.util.ArrayList;
+import java.util.TreeSet;
 
-/**
- * 简单排序
- */
-class Sort {
- public static void pri(TreeNode root){
-     Stack<TreeNode> stack1=new Stack<>();
-     Stack<TreeNode> stack2=new Stack<>();
-     stack1.push(root);
-     while (!stack1.empty()){
-         TreeNode tmp=stack1.pop();
-         stack2.push(tmp);
-         if(tmp.left!=null){
-             stack1.push(tmp.left);
-         }
-         if(tmp.right!=null){
-             stack1.push(tmp.right);
-         }
-     }
-     while (!stack2.isEmpty()){
-         System.out.println(stack2.pop().val);
-     }
+public class Solution {
 
- }
+    public ArrayList<String> Permutation(String str) {
+        ArrayList<String> result = new ArrayList<String>();
+        if (str == null || str.length() == 0) {
+            return result;
+        }
+        char[] chars = str.toCharArray();
+        TreeSet<String> temp = new TreeSet<>();
+        Permutation(chars, 0, temp);
+        result.addAll(temp);
+        return result;
+    }
 
-    public static void main(String[] args) {
-        int a[] = {2, 3, 1, 5, 0};
-      //  sort(a);
-        System.out.print(Arrays.toString(a));
+    public void Permutation(char[] chars, int begin, TreeSet<String> result) {
+        if (chars == null || chars.length == 0 || begin < 0 || begin > chars.length - 1) {
+            return;
+        }
+        if (begin == chars.length - 1) {
+            result.add(String.valueOf(chars));
+        } else {
+            for (int i = begin; i <= chars.length - 1; i++) {
+                swap(chars, begin, i);
+                Permutation(chars, begin + 1, result);
+                swap(chars, begin, i);
+            }
+        }
+    }
 
+    public void swap(char[] x, int a, int b) {
+        char t = x[a];
+        x[a] = x[b];
+        x[b] = t;
     }
 }
