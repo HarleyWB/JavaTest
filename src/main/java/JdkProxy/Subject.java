@@ -5,7 +5,5 @@ public interface Subject {
 
     void hello(String str) throws Exception;
 
-    default void je() {
 
-    }
 }
