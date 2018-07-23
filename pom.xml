@@ -8,5 +8,24 @@
     <artifactId>JavaTest</artifactId>
     <version>1.0-SNAPSHOT</version>
 
-    
+    <dependencies>
+        <!-- https://mvnrepository.com/artifact/cglib/cglib -->
+        <dependency>
+            <groupId>cglib</groupId>
+            <artifactId>cglib</artifactId>
+            <version>3.2.7</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/io.netty/netty -->
+        <dependency>
+            <groupId>io.netty</groupId>
+            <artifactId>netty</artifactId>
+            <version>3.10.5.Final</version>
+        </dependency>
+
+
+
+
+
+    </dependencies>
+
 </project>
