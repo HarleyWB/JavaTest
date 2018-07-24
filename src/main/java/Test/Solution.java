@@ -1,9 +1,15 @@
 package Test;
 
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
+
 import java.util.ArrayList;
 import java.util.TreeSet;
+import java.util.concurrent.locks.ReentrantLock;
 
 public class Solution {
+
+
 
     public ArrayList<String> Permutation(String str) {
         ArrayList<String> result = new ArrayList<String>();
@@ -11,13 +17,14 @@ public class Solution {
             return result;
         }
         char[] chars = str.toCharArray();
-        TreeSet<String> temp = new TreeSet<>();
+        TreeSet<String> temp = new TreeSet<String>();
         Permutation(chars, 0, temp);
         result.addAll(temp);
         return result;
     }
 
     public void Permutation(char[] chars, int begin, TreeSet<String> result) {
+
         if (chars == null || chars.length == 0 || begin < 0 || begin > chars.length - 1) {
             return;
         }
