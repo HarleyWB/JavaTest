@@ -1,47 +1,16 @@
 package Test;
 
-import org.apache.ibatis.session.SqlSession;
-import org.apache.ibatis.session.SqlSessionFactory;
+import java.util.HashMap;
+import java.util.Map;
 
-import java.util.ArrayList;
-import java.util.TreeSet;
-import java.util.concurrent.locks.ReentrantLock;
+class ThreadTest {
+    public static void main(String[] args) {
+        Map<String, String> map = new HashMap<>();
+        map.put("1", "1");
+        map.put("2", "2");
+        map.put("2", "3");
+        System.out.println(map.get("1"));
 
-public class Solution {
-
-
-
-    public ArrayList<String> Permutation(String str) {
-        ArrayList<String> result = new ArrayList<String>();
-        if (str == null || str.length() == 0) {
-            return result;
-        }
-        char[] chars = str.toCharArray();
-        TreeSet<String> temp = new TreeSet<String>();
-        Permutation(chars, 0, temp);
-        result.addAll(temp);
-        return result;
     }
 
-    public void Permutation(char[] chars, int begin, TreeSet<String> result) {
-
-        if (chars == null || chars.length == 0 || begin < 0 || begin > chars.length - 1) {
-            return;
-        }
-        if (begin == chars.length - 1) {
-            result.add(String.valueOf(chars));
-        } else {
-            for (int i = begin; i <= chars.length - 1; i++) {
-                swap(chars, begin, i);
-                Permutation(chars, begin + 1, result);
-                swap(chars, begin, i);
-            }
-        }
-    }
-
-    public void swap(char[] x, int a, int b) {
-        char t = x[a];
-        x[a] = x[b];
-        x[b] = t;
-    }
 }
