@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 class ThreadTest {
+
     public static void main(String[] args) {
         Map<String, String> map = new HashMap<>();
         map.put("1", "1");
