@@ -1,11 +1,11 @@
 package Test;
 
 public class TreeNode {
-    int val;
+    String val;
     TreeNode left;
     TreeNode right;
 
-    TreeNode(int x) {
+    TreeNode(String x) {
         val = x;
     }
 }
