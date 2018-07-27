@@ -3,24 +3,20 @@ package Test;
 import java.util.Arrays;
 import java.util.Stack;
 class Sort {
-    public static void pri(TreeNode root) {
-//非递归写法
-        Stack<TreeNode> stack1 = new Stack<>();
-        Stack<TreeNode> stack2 = new Stack<>();
-        stack1.push(root);
-        while (!stack1.empty()) {
-            TreeNode tmp = stack1.pop();
-            stack2.push(tmp);
-            if (tmp.left != null) {
-                stack1.push(tmp.left);
+    public static void adjustHeap(int[] arr, int i, int length) {
+        int temp = arr[i];//先取出当前元素i
+        for (int k = i * 2 + 1; k < length; k = k * 2 + 1) {//从i结点的左子结点开始，也就是2i+1处开始
+            if (k + 1 < length && arr[k] < arr[k + 1]) {//如果左子结点小于右子结点，k指向右子结点
+                k++;
             }
-            if (tmp.right != null) {
-                stack1.push(tmp.right);
+            if (arr[k] > temp) { //如果子节点大于父节点，将子节点值赋给父节点（不用进行交换）
+                arr[i] = arr[k];
+                i = k;
+            } else {
+                break;
             }
         }
-        while (!stack2.isEmpty()) {
-            System.out.println(stack2.pop().val);
-        }
+        arr[i] = temp;//将temp值放到最终的位置
     }
 
 
