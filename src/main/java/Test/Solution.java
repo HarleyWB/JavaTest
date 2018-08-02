@@ -1,7 +1,5 @@
 package Test;
 
-import java.util.Arrays;
-import java.util.Stack;
 class Sort {
     public static void adjustHeap(int[] arr, int i, int length) {
         int temp = arr[i];//先取出当前元素i
@@ -20,18 +18,18 @@ class Sort {
     }
 
 
-
 }
 
 class Solution {
     public static void pri2(TreeNode root) {
 //递归算法
-        if(root!=null){
+        if (root != null) {
             pri2(root.left);
             pri2(root.right);
             System.out.print(root.val);
         }
     }
+
     public static void main(String[] args) throws InterruptedException {
 
         TreeNode root = new TreeNode("A");
@@ -46,6 +44,6 @@ class Solution {
         B.right = null;
         D.left = null;
         D.right = null;
-pri2(root);
+        pri2(root);
     }
 }
