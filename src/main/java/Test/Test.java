@@ -1,31 +1,36 @@
 package Test;
 
-public class Test {
-    public static int partion(int[] a, int low, int high) {
-        int key = a[low];
-        while (low < high) {
-            while (a[high] > key && low < high) {
-                high--;
-            }
-            a[low] = a[high];
-            while (a[low] < key && low < high) {
-                low++;
-            }
-            a[high] = a[low];
 
-        }
-        a[high] = key;
-        return high;
+import java.util.concurrent.*;
+
+class Test {
+    public static void main(String[] args) throws InterruptedException {
+        ExecutorService es = new ThreadPoolExecutor(5, 5, 0, TimeUnit.SECONDS,
+                new SynchronousQueue<>(), new ThreadFactory() {
+            @Override
+            public Thread newThread(Runnable r) {
+                Thread t = new Thread(r);
+                t.setDaemon(true);
+                System.out.println("create");
+                return t;
+            }
+        });
+        es.submit(new MyTask("A"));
 
     }
 
-    public static void main(String[] args) {
+    public static class MyTask implements Runnable {
+        public String name;
 
-        int[] a = {2, 7, 0, 1, 4};
-        partion(a, 0, a.length - 1);
-        for (int i : a) {
-            System.out.println(i);
+        public MyTask(String name) {
+            this.name = name;
+
+        }
+
+        @Override
+        public synchronized void run() {
+            System.out.println("Thread ID " + Thread.currentThread().getId() + " " + name);
+
         }
     }
-
 }
